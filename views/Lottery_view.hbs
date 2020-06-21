@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Rigged Lottery Simulation!</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/all.css" rel="stylesheet" type="text/css"/> 
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+    <script src="/assets/js/jquery-3.5.0.min.js"></script>
+	<script src="/assets/js/bootstrap.bundle.min.js"></script> 
+	<script src="/assets/js/Javascript.js"></script>
+</head>
+<body onload="calculateRow();" >
+  <div id="border">Rigged Lottery!</div>
+	<div id="lotto1"></div>
+	<div id="lotto2"></div>
+	<div id="lotto3"></div>
+	<div id="lotto4"></div>
+	<div id="lotto5"></div>
+	<div id="lotto6"></div>
+	<p id ="p1">This is a Rigged Lottery Simulation, The lottery consists of six numbers in which the player has to guess all right. The numbers range between 1-46.It charges €5 per ticket.
+	This program will find the cheapest draw possible based on the database full of players numbers to make sure nobody wins!</p>
+	<p id="cost"></p>		
+	<p id="topPrize"></p>
+	<p id="secondPrize"></p>
+	<p id="thirdPrize"></p>
+	<p id="fourthPrize"></p>
+	<p id="fifthPrize"></p>
+	<p id="sixthPrize"></p>
+	<p id="profit"><p>
+  <button id="Run" onclick="Play();" class="btn btn-danger">Play!</button>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br>
+  <div class="container"> 
+    <h2><a class="breadcrumb-item text-dark" href="/">Lottery Database</a> <span class="badge badge-secondary" id="databaseFilterNotice"></span></h2>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"><i class="fa fa-search"></i></label>
+            <select class="custom-select" id="fieldSearchSelect">
+                <option value="1" selected>Lottery Number One</option>
+                <option value="2" >Lottery Number Two</option>
+                <option value="3" >Lottery Number Three</option>
+                <option value="4" >Lottery Number Four</option>
+                <option value="5" >Lottery Number Five</option>
+                <option value="6" >Lottery Number Six</option>
+            </select>
+        </div>
+        <input class="form-control py-2 border-left-0 border" type="search" placeholder="Filter Lottery Number One List ..." id="tableFilter">
+    <div id="constraint">
+		    <table class="table table-hover table-striped" id="lotteryList">
+		      <thead>
+		        <tr>  
+				<!-- Table headers-->
+		          <th style="width: 15%">Lottery Number 1</th>
+		          <th style="width: 15%">Lottery Number 2</th>
+		          <th style="width: 15%">Lottery Number 3</th>
+		          <th style="width: 15%">Lottery Number 4</th>
+		          <th style="width: 15%">Lottery Number 5</th>
+		          <th style="width: 15%">Lottery Number 6</th>
+		        </tr>
+		      </thead>		      
+		      		<tbody>
+			        {{#each results}}
+			        <tr >
+			          <td style="width: 15%">{{Lottery1}}</td>
+			          <td style="width: 15%">{{Lottery2}}</td>
+			          <td style="width: 15%">{{Lottery3}}</td>
+			          <td style="width: 15%">{{Lottery4}}</td>
+			          <td style="width: 15%">{{Lottery5}}</td>
+			          <td style="width: 15%">{{Lottery6}}</td>
+			        </tr>
+			        {{/each}}
+			      </tbody>      
+		    </table>
+	</div>
+	<p id="counting"></p>
+    <div class="input-group mb-3">
+    	<button class="btn btn-primary mr-5" data-toggle="modal" data-target="#addModal">Add</button>
+            <div class="input-group-prepend">
+             <select class="custom-select" id="databaseSearchSelect">
+                <option value="Lottery1" selected>Lottery Number One</option>
+                <option value="Lottery2" >Lottery Number Two</option>
+                <option value="Lottery3" >Lottery Number Three</option>
+                <option value="Lottery4" >Lottery Number Four</option>
+                <option value="Lottery5" >Lottery Number Five</option>
+                <option value="Lottery6" >Lottery Number Six</option>
+            </select>
+        </div>
+        <input class="form-control py-2 border-left-0 border" type="search" placeholder="Find in Database ..." id="databaseSearchFilter"> 
+        <div class="input-group-append">
+            <button class="btn btn-success" type="button" id="databaseSearch">Find</button>
+        </div>
+    </div>   
+    <form id="addForm" action="/" method="POST">
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Lottery numbers</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+             	<p><strong>By Clicking "Save", you'll add the maximum number of players</strong></p>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+    </form>
+</body>
+</html>
